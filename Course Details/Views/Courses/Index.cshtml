@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Course_Details.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h2>@ViewData["Message"]</h2>
+
+<p>
+    Total Number of Courses: @ViewBag.msg
+</p>
+
+<p>Technologies:</p>
+<ul>
+    @foreach (var technology in ViewBag.tech)
+    {
+        <li>@technology</li>
+    }
+</ul>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Technology)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Technology)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CId })
+            </td>
+        </tr>
+    }
+
+</table>
